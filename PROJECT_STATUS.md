@@ -16,4 +16,5 @@ The **SOC Strategic Alignment Simulator** is the **CORE TOOL** for the study. It
 ## 🚀 Active Actions
 1. **[SUCCESS]** Isolated `soc-paradox-sim` repository state.
 2. **[SUCCESS]** Linked to `soc-paradox` landing portal.
-3. **[PENDING]** User Approval: Commit re-initialized management files to `origin/main`.
+3. **[SUCCESS]** Added mission description to the simulator intro screen.
+4. **[PENDING]** User Approval: Commit re-initialized management files to `origin/main`.
