@@ -9,3 +9,11 @@ Desktop.ini
 
 # Logs
 *.log
+
+# AI Context & Management Files
+.context.md
+_manifest.md
+PROJECT_STATUS.md
+RESEARCH_TEST_PLAN.md
+TEST_EXECUTION_LOG.md
+visit_log.md
