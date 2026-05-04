@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Paradox Sim | Project Presentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+        :root {
+            --bg-color: #020617;
+            --card-bg: #0f172a;
+            --accent-green: #10b981;
+            --accent-purple: #a855f7;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        li::before {
+            content: '>>';
+            color: var(--accent-green);
+            margin-right: 15px;
+            font-weight: bold;
+            font-family: 'JetBrains Mono';
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: rgba(168, 85, 247, 0.05);
+            border-left: 4px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-green);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-green);
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="btn-back">← Back to Portfolio</a>
+
+    <!-- Slide 1: Title -->
+    <div class="slide">
+        <div class="tagline">PhD Research Artifact</div>
+        <h1>SOC Strategic Alignment Simulator</h1>
+        <h3>The Speed-Quality Paradox.</h3>
+        <p style="margin-top: 30px; color: var(--text-secondary); text-align: center; max-width: 700px;">
+            A simulation exploring the conflict between high-volume throughput KPIs and deep-review security objectives in modern Security Operations Centers.
+        </p>
+        <div class="footer">Cyber Studies Research · University of Tulsa</div>
+    </div>
+
+    <!-- Slide 2: The Problem -->
+    <div class="slide">
+        <div class="content-box">
+            <div class="tagline">The Research Gap</div>
+            <h2>Mismatched Objectives</h2>
+            <p>In many SOCs, analysts are measured by tickets closed (Speed), while the CISO cares about breach detection (Quality). This creates a "Productivity Trap".</p>
+            <ul>
+                <li><strong>Protocol A: Rapid Triage:</strong> High-volume, blurred streams. Can you find the threat while moving fast?</li>
+                <li><strong>Protocol B: Deep Review:</strong> Low-volume, clear streams. Does more time always equal better detection?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 3: Features -->
+    <div class="slide">
+        <div class="content-box">
+            <div class="tagline">The Simulator</div>
+            <h2>Experimental Design</h2>
+            <div class="grid">
+                <div class="stat-card">
+                    <strong>Real-time Audit</strong>
+                    <p style="font-size: 0.9rem;">Automated logic that analyzes your performance against the chosen strategy.</p>
+                </div>
+                <div class="stat-card">
+                    <strong>Leaderboard Sync</strong>
+                    <p style="font-size: 0.9rem;">Firebase integration for real-time global participant tracking and data collection.</p>
+                </div>
+                <div class="stat-card">
+                    <strong>Cognitive Load Sim</strong>
+                    <p style="font-size: 0.9rem;">Custom visual effects (blur, speed) to simulate the stress of a saturated alert queue.</p>
+                </div>
+                <div class="stat-card">
+                    <strong>Strategy Coherence</strong>
+                    <p style="font-size: 0.9rem;">Measures if your actions aligned with your stated operational goal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: CTA -->
+    <div class="slide">
+        <div class="tagline">Research in Action</div>
+        <h2>Test Your Alignment</h2>
+        <p style="font-size: 1.5rem; text-align: center;">Can you maintain precision under the pressure of the paradox?</p>
+        <div style="margin-top: 40px; padding: 20px; border: 2px dashed var(--accent-green); border-radius: 12px; font-family: 'JetBrains Mono';">
+            <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Enter Simulator →</a>
+        </div>
+        <div class="footer">SOC Strategy Simulation | Research Day 2026</div>
+    </div>
+
+</body>
+</html>
