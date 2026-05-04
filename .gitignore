@@ -1,19 +1,22 @@
-# Local IDE settings
-.vscode/
-.idea/
-
-# OS generated files
-Thumbs.db
-Desktop.ini
-.DS_Store
-
-# Logs
-*.log
-
-# AI Context & Management Files
+# AI Context & Management (Multi-Agent)
 .context.md
 _manifest.md
 PROJECT_STATUS.md
+CLAUDE.md
+.docs/
+.thinking/
+.llm_history/
+visit_log.md
+._manifest_state.txt
+.gemini/
+.geminiignore
+.env
+
+# Research Artifacts (Private)
 RESEARCH_TEST_PLAN.md
 TEST_EXECUTION_LOG.md
-visit_log.md
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
