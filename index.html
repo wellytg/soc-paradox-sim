@@ -167,8 +167,8 @@
     <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, limit, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { initializeFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, limit, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, setPersistence, browserLocalPersistence, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
         // APP CONFIG & INITIALIZATION
         const firebaseConfig = {
@@ -182,7 +182,9 @@
         };
         const appId = 'soc-paradox-sim';
         const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        
+        // FORCE LONG POLLING: Fixes connection issues on Safari/Apple devices
+        const db = initializeFirestore(app, { experimentalForceLongPolling: true });
         const auth = getAuth(app);
 
         let user = null;
@@ -196,6 +198,18 @@
             timerId: null,
             analystIndex: 1
         };
+
+        // FALLBACK FOR APPLE/SAFARI: If initializing takes too long, allow bypass
+        setTimeout(() => {
+            const btn = document.getElementById('btn-init');
+            if (btn.disabled && btn.innerText === "Initializing System...") {
+                btn.disabled = false;
+                btn.innerText = "Start Simulator (Low Sync Mode)";
+                btn.classList.add('bg-amber-600');
+                btn.onclick = () => showScreen('screen-choice');
+                console.warn("Firebase Auth hanging (likely Safari ITP). Enabling offline fallback.");
+            }
+        }, 5000);
 
         // AUTH & BOOTSTRAP
         const fetchLatestAnalystIndex = async () => {
@@ -218,6 +232,9 @@
 
         const initAuth = async () => {
             try {
+                // EXPLICIT PERSISTENCE: Helps with Safari Private Browsing and ITP
+                await setPersistence(auth, browserLocalPersistence);
+                
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
                 } else {
